@@ -11,12 +11,10 @@ import * as fileUtils from '../../../src/utils/fileUtils';
 
 describe('PluginLoader', () => {
   let sut: PluginLoader;
-  let sandbox: sinon.SinonSandbox;
   let importModuleStub: sinon.SinonStub;
   let pluginDirectoryReadMock: sinon.SinonStub;
 
   beforeEach(() => {
-    sandbox = sinon.createSandbox();
     importModuleStub = sinon.stub(fileUtils, 'importModule');
     pluginDirectoryReadMock = sinon.stub(fs, 'readdirSync');
   });
@@ -79,9 +77,5 @@ describe('PluginLoader', () => {
         expect(fileUtils.importModule).calledWithMatch(path.resolve(__dirname, '..', '..', '..', '..', '..', '@stryker-mutator', 'karma-runner'));
       });
     });
-  });
-
-  afterEach(() => {
-    sandbox.restore();
   });
 });

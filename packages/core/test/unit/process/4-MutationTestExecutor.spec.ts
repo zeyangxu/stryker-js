@@ -58,6 +58,11 @@ describe(MutationTestExecutor.name, () => {
       .injectClass(MutationTestExecutor);
   });
 
+  afterEach(() => {
+    checkerPoolMock.worker$.complete();
+    testRunnerPoolMock.worker$.complete();
+  });
+
   function arrangePools() {
     arrangeTestRunners();
     arrangeCheckers();

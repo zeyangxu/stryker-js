@@ -29,6 +29,15 @@ export class DirectoryRequireCache {
 
   public clear() {
     if (this.cache) {
+      const mochaModule = require.cache[require.resolve('mocha/lib/mocha')];
+      if (mochaModule) {
+        const files = mochaModule.children.filter((child) => this.cache.has(child.filename));
+        console.log(
+          `clearing ${files.length} files from ${require.resolve('mocha/lib/mocha')} children (${mochaModule.children.length - files.length} left)`
+        );
+        mochaModule.children = mochaModule.children.filter((child) => !this.cache.has(child.filename));
+      }
+
       this.cache.forEach((fileName) => delete require.cache[fileName]);
     }
   }

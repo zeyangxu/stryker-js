@@ -36,7 +36,7 @@ export default class MochaOptionsLoader {
 
   public load(strykerOptions: MochaRunnerWithStrykerOptions): MochaOptions {
     const mochaOptions = { ...strykerOptions.mochaOptions } as MochaOptions;
-    return { ...DEFAULT_MOCHA_OPTIONS, ...this.loadMochaOptions(mochaOptions), ...mochaOptions };
+    return { ...DEFAULT_MOCHA_OPTIONS, ...this.loadMochaOptions(mochaOptions), ...mochaOptions, timeout: 0 };
   }
 
   private loadMochaOptions(overrides: MochaOptions) {

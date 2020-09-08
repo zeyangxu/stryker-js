@@ -8,22 +8,18 @@ import TimeoutDecorator from '../../../src/test-runner/TimeoutDecorator';
 
 describe('TimeoutDecorator', () => {
   let sut: TimeoutDecorator;
-  let sandbox: sinon.SinonSandbox;
   let clock: sinon.SinonFakeTimers;
   let testRunner1: sinon.SinonStubbedInstance<Required<TestRunner2>>;
   let testRunner2: sinon.SinonStubbedInstance<Required<TestRunner2>>;
   let availableTestRunners: Array<sinon.SinonStubbedInstance<Required<TestRunner2>>>;
 
   beforeEach(() => {
-    sandbox = sinon.createSandbox();
     clock = sinon.useFakeTimers();
     testRunner1 = factory.testRunner();
     testRunner2 = factory.testRunner();
     availableTestRunners = [testRunner1, testRunner2];
     sut = new TimeoutDecorator(() => availableTestRunners.shift() || expect.fail('test runners are empty'));
   });
-
-  afterEach(() => sandbox.restore());
 
   function itShouldProxyRequests<T>(action: () => Promise<T>, methodName: 'init' | 'dispose' | 'dryRun' | 'mutantRun') {
     it('should proxy the request', () => {

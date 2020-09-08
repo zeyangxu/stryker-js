@@ -11,11 +11,9 @@ import DotsReporter from '../../../src/reporters/DotsReporter';
 
 describe('DotsReporter', () => {
   let sut: DotsReporter;
-  let sandbox: sinon.SinonSandbox;
 
   beforeEach(() => {
     sut = new DotsReporter();
-    sandbox = sinon.createSandbox();
     sinon.stub(process.stdout, 'write');
   });
 
@@ -56,9 +54,5 @@ describe('DotsReporter', () => {
       sut.onAllMutantsTested();
       expect(process.stdout.write).to.have.been.calledWith(os.EOL);
     });
-  });
-
-  afterEach(() => {
-    sandbox.restore();
   });
 });

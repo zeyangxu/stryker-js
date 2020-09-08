@@ -32,6 +32,10 @@ describe(DryRunExecutor.name, () => {
     sut = new DryRunExecutor(injectorMock, testInjector.logger, testInjector.options, timerMock, concurrencyTokenProviderMock);
   });
 
+  afterEach(() => {
+    testRunnerPoolMock.worker$.complete();
+  });
+
   it('should pass through any rejections', async () => {
     const expectedError = new Error('expected error');
     testRunnerMock.dryRun.rejects(expectedError);
