@@ -136,7 +136,7 @@ cd .stryker-tmp/sandbox-12345678
 node ../../node_modules/typescript/bin/tsc -b path/to/tsconfig.json
 ```
 
-> Note: since the sandbox dir doesn't have you node_modules, you will need to specify the full path to the TypeScript compiler.
+> Note: since the sandbox dir doesn't have your node_modules, you will need to specify the full path to the TypeScript compiler.
 
 ### Initial test run fails 
 
