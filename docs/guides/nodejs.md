@@ -99,17 +99,7 @@ Example:
 }
 ```
 
-Jest has two ways to provide TypeScript compilation, either [using babel](https://jestjs.io/docs/en/getting-started#using-typescript) (default) or using [ts-jest](https://www.npmjs.com/package/ts-jest). For both, you _don't need to configure the `buildCommand`_. 
-
-## Run
-
-Run Stryker as per usual, either using a custom script in package.json or using `npx`.
-
-```shell
-npx stryker run
-# OR, if your script is called "test:mutation"
-npm run test:mutation 
-```
+Jest has two ways to provide TypeScript compilation, either [using babel](https://jestjs.io/docs/en/getting-started#using-typescript) (default) or using [ts-jest](https://www.npmjs.com/package/ts-jest). For both, you _don't need to configure the `buildCommand`_.
 
 #### Jasmine
 
@@ -121,6 +111,16 @@ Example:
   "jasmineConfigFile": "spec/support/jasmine.json",
   "testRunner": "jasmine"
 }
+``` 
+
+## Run
+
+Run Stryker as per usual, either using a custom script in package.json or using `npx`.
+
+```shell
+npx stryker run
+# OR, if your script is called "test:mutation"
+npm run test:mutation 
 ```
 
 ## Troubleshooting FAQ
@@ -154,6 +154,7 @@ The initial test run might fail when you're using ts-jest or ts-node. The reason
 ```
 
 ### No tests executed - jest runner
+
 You might run into issues like this when using the `@stryker-mutator/jest-runner`:
 
 > No tests found, exiting with code 1
